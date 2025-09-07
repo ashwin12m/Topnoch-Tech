@@ -1,0 +1,1270 @@
+<html>
+
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,300italic,400italic,600italic,600'
+        rel='stylesheet' type='text/css'>
+    <link rel="Stylesheet" href="css/master.css" type="text/css" />
+    </style>
+
+    <link rel="Stylesheet" href="https://ianlunn.github.io/Hover/css/hover.css" type="text/css" />
+
+    <link rel="Stylesheet" href='https://fonts.googleapis.com/css?family=Muli' type='text/css'>
+
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Lobster&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- Owl Carousel JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+    <style>
+        html,
+        body * {
+            box-sizing: border-box;
+            font-family: 'Titillium Web', 'Muli', 'Bruno Ace SC', 'Lobster', Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+            background-color: linear-gradient(to right, #f0f0f0, #54545499);
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        model-viewer {
+            width: 800px;
+            height: 800px;
+            background-color: transparent;
+
+        }
+
+        .floating-text {
+            position: absolute;
+            left: 0;
+            top: 40%;
+            font-size: 7vw;
+            transform: translateY(-50%);
+            padding: 10px 20px;
+            font-family: 'Bruno Ace SC', 'Titillium Web', Arial, sans-serif;
+            color: #082e6d;
+            text-shadow: 2px 2px 16px rgba(0, 0, 0, 0.5);
+            z-index: 2;
+            opacity: 0;
+            animation: float-text-in 2s cubic-bezier(0.77, 0, 0.175, 1) 5s forwards;
+            pointer-events: none;
+        }
+
+        @keyframes float-text-in {
+            0% {
+                opacity: 0;
+                left: 10vw;
+                transform: translateY(-50%) scale(0.8);
+                z-index: -1;
+            }
+
+            60% {
+                opacity: 1;
+                left: 33%;
+                transform: translateY(-50%) scale(1.05);
+                z-index: -1;
+            }
+
+            100% {
+                opacity: 1;
+                left: 30%;
+                transform: translateY(-50%) scale(1);
+                z-index: -1;
+            }
+        }
+
+        nav {
+            width: 100%;
+            height: 48px;
+            background: -webkit-linear-gradient(rgba(35, 43, 85, 0.35), rgba(35, 43, 85, 0.55));
+            background: linear-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.55));
+            margin-left: auto;
+            margin-right: auto;
+            /* Animation for sliding in from top */
+            transform: translateY(-100%);
+            opacity: 0;
+            animation: navbar-slide-in 1s cubic-bezier(0.77, 0, 0.175, 1) 1.5s forwards;
+        }
+
+        @keyframes navbar-slide-in {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        nav ul {
+            margin: 0;
+            list-style: none;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+            padding: 0;
+        }
+
+        nav ul li:first-child {
+            margin-right: auto;
+        }
+
+        nav ul li {
+            height: 48px;
+            line-height: 48px;
+            transition: background 0.3s ease;
+        }
+
+        nav ul li.menu {
+            /* Menu items after logo */
+            float: none;
+        }
+
+        nav ul li:hover {
+            background: rgba(0, 0, 0, 0.1);
+            animation: nav-bounce 0.3s;
+        }
+
+        @keyframes nav-bounce {
+            0% {
+                transform: translateY(0);
+            }
+
+            30% {
+                transform: translateY(-6px);
+            }
+
+            60% {
+                transform: translateY(2px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        nav ul li:hover>a {
+            color: #082e6d;
+        }
+
+        nav ul li a {
+            text-transform: uppercase;
+            display: block;
+            padding: 0 40px;
+            color: #082e6d;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-family: 'Titillium Web', 'Lobster', Arial, sans-serif;
+        }
+
+        nav ul ul {
+            display: block;
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            background: -webkit-linear-gradient(rgba(35, 43, 85, 0.35), rgba(35, 43, 85, 0.55));
+            background: linear-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.55));
+            border-radius: 0px;
+            padding: 0;
+            position: absolute;
+            top: 100%;
+            box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.2);
+        }
+
+        nav ul ul li {
+            float: none;
+            position: relative;
+        }
+
+        nav ul ul li a {
+            padding: 0 40px;
+            transition: all .5s ease;
+            white-space: nowrap;
+            color: #082e6d;
+            font-family: 'Titillium Web', Arial, sans-serif;
+        }
+
+        nav ul ul ul {
+            position: absolute;
+            left: 100%;
+            top: 0;
+        }
+
+        .menu {
+            font-family: 'Lobster', 'Titillium Web', Arial, sans-serif;
+            font-size: 20px;
+            color: #082e6d;
+            text-shadow: 0 0 8px #082e6d;
+            padding: 0 20px;
+            transition: all 0.3s ease;
+        }
+
+        #log1 {
+            height: 250px;
+            top: -90px;
+            position: relative;
+        }
+
+        #text2 {
+            position: absolute;
+            top: 60%;
+            left: 55%;
+            width: 80%;
+            transform: translate(-50%, -50%);
+            font-size: 4vw;
+            font-family: 'Muli', 'Titillium Web', Arial, sans-serif;
+            color: #082e6d;
+            padding: 18px 40px;
+            text-align: right;
+            z-index: 3;
+            /* Animation for floating from right to left */
+            opacity: 0;
+            animation: float-right-to-left 2.5s cubic-bezier(0.77, 0, 0.175, 1) 5.5s forwards;
+        }
+
+        @keyframes float-right-to-left {
+            0% {
+                opacity: 0;
+                left: 100vw;
+                transform: translateY(-50%) scale(0.8);
+            }
+
+            100% {
+                opacity: 1;
+                left: 7%;
+                transform: translateY(-50%) scale(1);
+            }
+        }
+
+        .about-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 20px;
+            max-width: 1200px;
+            margin: 100px;
+            margin-bottom: 150px;
+        }
+
+        .text-content {
+            max-width: 600px;
+            text-align: left;
+            font-family: 'Muli', 'Titillium Web', Arial, sans-serif;
+        }
+
+        .subheading {
+            text-transform: uppercase;
+            font-size: 40px;
+            color: #082e6d;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            font-family: 'Bruno Ace SC', Arial, sans-serif;
+        }
+
+        h1 {
+            font-size: 26px;
+            line-height: 1.3;
+            margin-bottom: 20px;
+            font-family: 'Bruno Ace SC', 'Titillium Web', Arial, sans-serif;
+        }
+
+        .highlight {
+            color: #082e6d;
+            font-family: inherit;
+        }
+
+        .bold {
+            color: #082e6d;
+            font-weight: bold;
+            font-family: inherit;
+        }
+
+        .description {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 30px;
+            font-family: 'Muli', 'Titillium Web', Arial, sans-serif;
+        }
+
+
+        .image-content {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .image-content img {
+            width: 300px;
+            border-radius: 50%;
+        }
+
+        @media (min-width: 768px) {
+            .about-section {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .image-content {
+                margin-top: 0;
+            }
+
+            .image-content img {
+                width: 400px;
+            }
+        }
+
+        .contact {
+            padding: 30px 0;
+        }
+
+        .contact .heading h2 {
+            font-size: 30px;
+            font-weight: 400;
+            margin: 0;
+            padding: 0;
+            font-family: 'Bruno Ace SC', 'Titillium Web', Arial, sans-serif;
+        }
+
+        .contact .heading h2 span {
+            color: #082e6d;
+        }
+
+        .contact .heading p {
+            font-size: 15px;
+            font-weight: 400;
+            line-height: 1.7;
+            color: #999999;
+            margin: 20px 0 60px;
+            padding: 0;
+            font-family: 'Muli', 'Titillium Web', Arial, sans-serif;
+        }
+
+        .contact .form-control {
+            padding: 25px;
+            font-size: 13px;
+            margin-bottom: 10px;
+            background: #f9f9f9;
+            border: 0;
+            border-radius: 10px;
+            font-family: 'Muli', 'Titillium Web', Arial, sans-serif;
+        }
+
+        .contact button.btn {
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 15px;
+            background: #082e6d;
+            color: #ffffff;
+            font-family: 'Titillium Web', Arial, sans-serif;
+        }
+
+        .contact .title h3 {
+            font-size: 18px;
+            font-weight: 400;
+            font-family: 'Titillium Web', Arial, sans-serif;
+        }
+
+        .contact .title p {
+            font-size: 14px;
+            font-weight: 400;
+            color: #999;
+            line-height: 1.6;
+            margin: 0 0 40px;
+            font-family: 'Muli', 'Titillium Web', Arial, sans-serif;
+        }
+
+        .contact .content .info {
+            margin-top: 30px;
+        }
+
+        .contact .content .info i {
+            font-size: 30px;
+            padding: 0;
+            margin: 0;
+            color: #02434b;
+            margin-right: 20px;
+            text-align: center;
+            width: 20px;
+        }
+
+        .contact .content .info h4 {
+            font-size: 13px;
+            line-height: 1.4;
+            font-family: 'Titillium Web', Arial, sans-serif;
+        }
+
+        .contact .content .info h4 span {
+            font-size: 13px;
+            font-weight: 400;
+            color: #999999;
+            font-family: 'Muli', 'Titillium Web', Arial, sans-serif;
+        }
+
+        .sec-title {
+            margin-bottom: 50px;
+            padding-bottom: 15px;
+            position: relative;
+            text-align: center;
+        }
+
+        .sec-title::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 0;
+            width: 100px;
+            height: 3px;
+            background: #000;
+        }
+
+        .sec-title h2 {
+            font-size: 48px;
+            font-family: 'Bruno Ace SC', 'Titillium Web', Arial, sans-serif;
+            font-weight: 400;
+            letter-spacing: 0px;
+            text-transform: uppercase;
+            color: #082e6d;
+            margin-bottom: 10px;
+        }
+
+        .sec-title p {
+            font-size: 18px;
+            line-height: 28px;
+            color: #444;
+            font-family: 'Muli', 'Titillium Web', Arial, sans-serif;
+        }
+
+        .testimonial-area {
+            position: relative;
+            z-index: 2;
+            padding: 50px 0;
+            background: #f7f7f7;
+        }
+
+        .testimonial-content.owl-carousel {
+            overflow: visible;
+        }
+
+        .testimonial-area .owl-carousel {
+            padding: 0 10px;
+        }
+
+        .testimonial-area .owl-stage-outer {
+            padding: 30px 0;
+        }
+
+        .single-testimonial {
+            border: 3px solid #082e6d;
+            text-align: center;
+            border-radius: 30px;
+            position: relative;
+            z-index: 2;
+            background: #fff;
+            box-shadow: 0 4px 24px rgba(8, 46, 109, 0.07);
+            margin: 20px 10px;
+            overflow: hidden;
+            font-family: 'Muli', 'Titillium Web', Arial, sans-serif;
+        }
+
+        .single-testimonial p {
+            color: #222;
+            font-size: 16px;
+            line-height: 1.7;
+            padding: 40px 30px 20px 30px;
+            position: relative;
+            z-index: 3;
+            font-family: inherit;
+        }
+
+        .single-testimonial::before {
+            content: "";
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            background-size: 40px 32px;
+            width: 40px;
+            height: 32px;
+            opacity: 0.15;
+        }
+
+        .single-testimonial::after {
+            content: "";
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            background-size: 40px 32px;
+            width: 40px;
+            height: 32px;
+            opacity: 0.15;
+            transform: rotate(180deg);
+        }
+
+        .round {
+            display: none;
+        }
+
+        .client-info {
+            position: relative;
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: left;
+            padding-bottom: 20px;
+            gap: 16px;
+            font-family: 'Titillium Web', Arial, sans-serif;
+        }
+
+        .client-video a img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 2px 8px rgba(8, 46, 109, 0.10);
+        }
+
+        .client-details h6 {
+            color: #082e6d;
+            font-weight: 700;
+            font-size: 18px;
+            margin: 0 0 2px 0;
+            font-family: 'Titillium Web', Arial, sans-serif;
+        }
+
+        .client-details span {
+            display: inline-block;
+            color: #666;
+            font-size: 13px;
+            font-family: 'Muli', 'Titillium Web', Arial, sans-serif;
+        }
+
+        .sec-title.white-title h2 {
+            color: #082e6d;
+        }
+
+        .owl-dots {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .owl-dots button {
+            background: #082e6d !important;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin: 0 5px;
+            border: none;
+            transition: width 0.3s;
+        }
+
+        .owl-dots button.active {
+            width: 30px;
+            border-radius: 20px;
+        }
+
+        @media (max-width: 991px) {
+            .single-testimonial {
+                margin: 20px 0;
+            }
+
+            .testimonial-area .owl-stage-outer {
+                padding: 10px 0;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .sec-title h2 {
+                font-size: 32px;
+            }
+
+            .single-testimonial p {
+                padding: 30px 10px 15px 10px;
+                font-size: 15px;
+            }
+
+            .client-video a img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        .cards-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 70px;
+      width: 100%;
+    }
+
+    .card-container {
+      flex: 1 1 calc(33.333% - 40px);
+      max-width: calc(33.333% - 40px);
+      position: relative;
+      height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.75s ease-out;
+      perspective: 1000px;
+      cursor: pointer;
+      overflow: visible;
+    }
+
+    @media (max-width: 1024px) {
+      .card-container {
+        flex: 1 1 calc(50% - 40px);
+        max-width: calc(50% - 40px);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .card-container {
+        flex: 1 1 100%;
+        max-width: 100%;
+      }
+    }
+
+    .card-box {
+      transition: all 0.75s;
+      width: 600px;
+      height: auto;
+      border-radius: 30px;
+      padding: 2vh 5%;
+      box-shadow: 0 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 50px rgba(0, 0, 0, 0.2);
+      position: relative;
+      transform-style: preserve-3d;
+      overflow: visible;
+    }
+
+    .card-image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 5vh;
+      transform-style: preserve-3d;
+      position: relative;
+      z-index: 1;
+      overflow: visible;
+    }
+
+    .card-image img {
+      width: 50%;
+      z-index: 2;
+      transition: all 0.5s ease;
+      will-change: transform;
+      pointer-events: none;
+    }
+
+    .card-container:hover .card-image img {
+      transform: translateY(-30px) scale(1.2);
+    }
+
+    .card-info {
+      text-align: center;
+      transform-style: preserve-3d;
+    }
+
+    .card-info h1 {
+      font-family: "Bebas Neue", sans-serif;
+      letter-spacing: 0.05em;
+      color: #443763;
+      font-size: clamp(28px, 4vw, 30px);
+      margin-bottom: 5vh;
+      transition: all 0.75s ease-out;
+    }
+
+    .card-info h3 {
+      font-size: clamp(17px, 2vw, 22px);
+      margin-bottom: 2vh;
+      color: #585858;
+      font-weight: lighter;
+      transition: all 0.75s ease-out;
+    }
+
+    .card-purchase {
+      margin-bottom: 5vh;
+      transition: all 0.75s ease-out;
+    }
+
+    .card-purchase button {
+      font-family: "Bebas Neue", sans-serif;
+      letter-spacing: 0.1em;
+      width: 70%;
+      max-width: 400px;
+      font-size: clamp(14px, 2vw, 20px);
+      padding: 0.7em 2em;
+      background: #443763;
+      border: none;
+      color: white;
+      cursor: pointer;
+      border-radius: 25px;
+      font-weight: bolder;
+    }
+
+    /* Main wide section styles */
+    .main-container {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.75s ease-out;
+      perspective: 1000px;
+      padding: 30px;
+      margin-bottom: 80px;
+      cursor: pointer;
+      overflow: visible;
+    }
+
+    .main-card {
+      transition: all 0.5s ease;
+      width: 100%;
+      height: auto;
+      display: flex;
+      border-radius: 30px;
+      padding: 2vh 5%;
+      box-shadow: 0 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 50px rgba(0, 0, 0, 0.2);
+      position: relative;
+      transform-style: preserve-3d;
+      overflow: visible;
+    }
+
+    .main-image {
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 2vh;
+      transform-style: preserve-3d;
+      position: relative;
+      overflow: visible;
+      z-index: 1;
+    }
+
+    .main-image img {
+      width: 50%;
+      z-index: 2;
+      margin-left: 100px;
+      transition: all 0.6s ease;
+      will-change: transform;
+      pointer-events: none;
+    }
+
+    .main-container:hover .main-image img {
+      transform: translateY(-80px) scale(1.5);
+    }
+
+    .main-info {
+      width: 400px;
+      text-align: center;
+      margin-right: 10%;
+      transform-style: preserve-3d;
+    }
+
+    .main-info h1 {
+      font-family: "Bebas Neue", sans-serif;
+      letter-spacing: 0.05em;
+      color: #443763;
+      font-size: clamp(28px, 4vw, 42px);
+      margin-bottom: 4vh;
+      margin-top: 25px;
+      transition: all 0.75s ease-out;
+    }
+
+    .main-info h3 {
+      font-size: clamp(17px, 2vw, 22px);
+      margin-bottom: 2vh;
+      color: #585858;
+      font-weight: lighter;
+      transition: all 0.75s ease-out;
+    }
+
+    .main-purchase {
+      margin-bottom: 2vh;
+      transition: all 0.75s ease-out;
+    }
+
+    .main-purchase button {
+      font-family: "Bebas Neue", sans-serif;
+      letter-spacing: 0.1em;
+      max-width: 500px;
+      height: 60px;
+      font-size: clamp(14px, 2vw, 20px);
+      padding: 0.5em 1em;
+      background: #443763;
+      border: none;
+      color: white;
+      cursor: pointer;
+      border-radius: 25px;
+      font-weight: bolder;
+    }
+    #s1
+    {
+        text-transform: uppercase;
+            font-size: 40px;
+            color: #082e6d;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            font-family: 'Bruno Ace SC', Arial, sans-serif;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="Home" id="Home1">
+        <nav>
+            <ul style="display: flex; align-items: center; margin: 0; padding: 0;">
+                <li style="float: none; padding: 0 20px 0 0;">
+                    <a href="#" style="padding: 0;">
+                        <img src="/Primary Logo Dark Blue_1@3x (1).png" alt="Logo" id="log1">
+                    </a>
+                </li>
+                <li class="menu"><a href="#Home1">Home</a></li>
+                <li class="menu"><a href="#">Services</a></li>
+                <li class="menu"><a href="#About1">About Us</a></li>
+                <li class="menu"><a href="#Contact1">Contact</a></li>
+            </ul>
+        </nav>
+
+        <model-viewer class="floating" src="soulless.glb" alt="Floating Model" camera-controls disable-zoom
+            environment-image="neutral" shadow-intensity="1" shadow-softness="0.9" exposure="1"
+            style="height: 600px; width: 600px;" field-of-view="20deg" camera-orbit="-30deg 100deg auto">
+        </model-viewer>
+
+        <div class="floating-text">
+            T O P N O C H
+        </div>
+        <div id="text2">
+            Built For What’s Next
+        </div>
+    </div>
+
+    
+    <div class="about" id="About1">
+        <section class="about-section">
+            <div class="text-content">
+                <p class="subheading">About Us</p>
+                <h1>
+                    “Future-Proof IT Solutions Designed For Your <span class="highlight">success</span>"
+                </h1>
+                <p class="description">
+                    TOPNOCH is a leading IT solutions provider committed to delivering reliable, efficient, and
+                    future-ready technologies. We partner with businesses to streamline operations, enhance performance,
+                    and enable sustainable digital growth through tailored, high-quality solutions.
+                </p>
+            </div>
+
+            <div class="image-content">
+                <model-viewer class="floating" src="/scifi_drone.glb" alt="Floating Model" camera-controls disable-zoom
+                    environment-image="neutral" shadow-intensity="1" shadow-softness="0.9" exposure="1"
+                    style="height: 400px; width: 400px;" field-of-view="20deg" camera-orbit="110deg 90deg auto">
+                </model-viewer>
+            </div>
+        </section>
+    </div>
+
+    <div class="services" id="Services1">
+        <center><h2 id="s1">services</h2></center>
+<div class="cards-grid">
+
+  <div class="card-container">
+    <div class="card-box">
+      <div class="card-image">
+        <!-- <div class="circle"></div> -->
+        <img src="/services3/services/img/PHOTOSS (158 x 133 px) (7).png" alt="image">
+      </div>
+      <div class="card-info">
+        <h1 class="title">BRANDING <span style="color: #ea3900;"></span></h1>
+        <!-- <h3><strong>That Builds Trust,</strong></br>Tells Stories & Turns Heads</h3> -->
+        <div class="card-purchase">
+          <button>Make an Offer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-container">
+    <div class="card-box">
+      <div class="card-image">
+        <!-- <div class="circle"></div> -->
+        <img src="/services3/services/img/PHOTOSS (158 x 133 px) (3).png" alt="image">
+      </div>
+      <div class="card-info">
+        <h1 class="title">SOCIAL MEDIA <span style="color: #ea3900;"></span></h1>
+        <!-- <h3><strong>That Moves the Needle</strong></br>(Get it while you can)</h3> -->
+        <div class="card-purchase">
+          <button>Make an Offer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-container">
+    <div class="card-box">
+      <div class="card-image">
+        <!-- <div class="circle"></div> -->
+        <img src="/services3/services/img/PHOTOSS (158 x 133 px) (2).png" alt="image">
+      </div>
+      <div class="card-info">
+        <h1 class="title">CONTENT VISUALS <span style="color: #ea3900;"></span></h1>
+        <!-- <h3><strong>The One and Only</strong></br>(Get it while you can)</h3> -->
+        <div class="card-purchase">
+          <button>Make an Offer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-container">
+    <div class="card-box">
+      <div class="card-image">
+        <!-- <div class="circle"></div> -->
+        <img src="/services3/services/img/giphy (77).gif" alt="image">
+      </div>
+      <div class="card-info">
+        <h1 class="title">3D CONTENT <span style="color: #ea3900;"></span></h1>
+        <!-- <h3><strong>The One and Only</strong></br>(Get it while you can)</h3> -->
+        <div class="card-purchase">
+          <button>Make an Offer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-container">
+    <div class="card-box">
+      <div class="card-image">
+        <!-- <div class="circle"></div> -->
+        <img src="/services3/services/img/PHOTOSS (158 x 133 px) (1).png" alt="image">
+      </div>
+      <div class="card-info">
+        <h1 class="title">WEBSITE <span style="color: #ea3900;"></span></h1>
+        <!-- <h3><strong>The One and Only</strong></br>(Get it while you can)</h3> -->
+        <div class="card-purchase">
+          <button>Make an Offer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-container">
+    <div class="card-box">
+      <div class="card-image">
+        <!-- <div class="circle"></div> -->
+        <img src="/services3/services/img/PHOTOSS (158 x 133 px) (4).png" alt="image">
+      </div>
+      <div class="card-info">
+        <h1 class="title">PRINT MARKETING <span style="color: #ea3900;"></span></h1>
+        <!-- <h3><strong>The One and Only</strong></br>(Get it while you can)</h3> -->
+        <div class="card-purchase">
+          <button>Make an Offer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-container">
+    <div class="main-card">
+      <div class="main-image">
+        <!-- <div class="circle"></div> -->
+        <img src="/services3/services/img/PHOTOSS (158 x 133 px) (6).png" alt="image">
+      </div>
+      <div class="main-info">
+        <h1 class="titles">INFLUENCER MANAGEMENT <span style="color: #ea3900;"></span></h1>
+        <!-- <h3><strong>The One and Only</strong></br>(Get it while you can)</h3> -->
+        <div class="main-purchase">
+          <button>Make an Offer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+    </div>
+    <div class="testimonial1">
+        <section class="testimonial-area">
+            <div class="container">
+                <div class="sec-title white-title">
+                    <h2>Testimonials</h2>
+                    <p>What Client Say About Us?</p>
+                </div>
+                <div class="testimonial-content owl-carousel">
+                    <!-- Single Testimonial -->
+                    <div class="single-testimonial">
+                        <div class="round-1 round"></div>
+                        <div class="round-2 round"></div>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                            been
+                            the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+                            galley
+                            of type and scrambled it to make a type specimen book</p>
+                        <div class="client-info">
+                            <div class="client-video">
+                                <a href="#"><img
+                                        src="https://i.pinimg.com/736x/d1/ff/21/d1ff21ed00b54e8dd8db0d16105f2602.jpg"
+                                        alt=""></a>
+                            </div>
+                            <div class="client-details">
+                                <h6>Yeasin Arafat</h6>
+                                <span>Designer, LLCG Team</span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- Single Testimonial -->
+                    <div class="single-testimonial">
+                        <div class="round-1 round"></div>
+                        <div class="round-2 round"></div>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                            been
+                            the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+                            galley
+                            of type and scrambled it to make a type specimen book</p>
+                        <div class="client-info">
+                            <div class="client-video">
+                                <a href="#"><img
+                                        src="https://i.pinimg.com/736x/d1/ff/21/d1ff21ed00b54e8dd8db0d16105f2602.jpg"
+                                        alt=""></a>
+                            </div>
+                            <div class="client-details">
+                                <h6>Yeasin Arafat</h6>
+                                <span>Designer, LLCG Team</span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- Single Testimonial -->
+                    <div class="single-testimonial">
+                        <div class="round-1 round"></div>
+                        <div class="round-2 round"></div>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                            been
+                            the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+                            galley
+                            of type and scrambled it to make a type specimen book</p>
+                        <div class="client-info">
+                            <div class="client-video">
+                                <a href="#"><img
+                                        src="https://i.pinimg.com/736x/d1/ff/21/d1ff21ed00b54e8dd8db0d16105f2602.jpg"
+                                        alt=""></a>
+                            </div>
+                            <div class="client-details">
+                                <h6>Yeasin Arafat</h6>
+                                <span>Designer, LLCG Team</span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- Single Testimonial -->
+                    <div class="single-testimonial">
+                        <div class="round-1 round"></div>
+                        <div class="round-2 round"></div>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                            been
+                            the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+                            galley
+                            of type and scrambled it to make a type specimen book</p>
+                        <div class="client-info">
+                            <div class="client-video">
+                                <a href="#"><img
+                                        src="https://i.pinimg.com/736x/04/5d/c4/045dc4ee0b156d3987f81f1d7ef819cd.jpg"
+                                        alt=""></a>
+                            </div>
+                            <div class="client-details">
+                                <h6>Yeasin Arafat</h6>
+                                <span>Designer, LLCG Team</span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- Single Testimonial -->
+                    <div class="single-testimonial">
+                        <div class="round-1 round"></div>
+                        <div class="round-2 round"></div>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                            been
+                            the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+                            galley
+                            of type and scrambled it to make a type specimen book</p>
+                        <div class="client-info">
+                            <div class="client-video">
+                                <a href="#"><img
+                                        src="https://i.pinimg.com/736x/aa/06/d7/aa06d77cd048b867f5d0b40362e62a76.jpg"
+                                        alt=""></a>
+                            </div>
+                            <div class="client-details">
+                                <h6>Yeasin Arafat</h6>
+                                <span>Designer, LLCG Team</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="contact" id="Contact1">
+        <div class="container">
+            <div class="sec-title">
+                <h2>Contact Us</h2>
+                <p>Get In Touch With Us</p>
+            </div>
+        </div>
+        <section class="contact" id="contact">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="title">
+                            <h3>Contact detail</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
+                        </div>
+                        <div class="content">
+                            <!-- Info-1 -->
+                            <div class="info">
+                                <i class="fas fa-mobile-alt"></i>
+                                <h4 class="d-inline-block">PHONE :
+                                    <br>
+                                    <span>+12457836913 , +12457836913</span>
+                                </h4>
+                            </div>
+                            <!-- Info-2 -->
+                            <div class="info">
+                                <i class="far fa-envelope"></i>
+                                <h4 class="d-inline-block">EMAIL :
+                                    <br>
+                                    <span>example@info.com</span>
+                                </h4>
+                            </div>
+                            <!-- Info-3 -->
+                            <div class="info">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <h4 class="d-inline-block">ADDRESS :<br>
+                                    <span>6743 last street , Abcd, Xyz</span>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-7">
+
+                        <form>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" placeholder="Name">
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="email" class="form-control" placeholder="Email">
+                                </div>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control" placeholder="Subject">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" rows="5" id="comment" placeholder="Message"></textarea>
+                            </div>
+                            <button class="btn btn-block" type="submit">Send Now!</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Select both model-viewer elements
+        const modelViewers = document.querySelectorAll('model-viewer');
+        if (modelViewers.length < 2) return;
+
+        // Helper to clamp values
+        function clamp(val, min, max) {
+            return Math.max(min, Math.min(max, val));
+        }
+
+        // Animation state for both models
+        let targets = [
+            { azimuth: -30, elevation: 100, currentAzimuth: -30, currentElevation: 100, baseAzimuth: -30, baseElevation: 100, azimuthRange: 20, elevationRange: 25 },
+            { azimuth: 110, elevation: 90, currentAzimuth: 110, currentElevation: 90, baseAzimuth: 110, baseElevation: 90, azimuthRange: 20, elevationRange: 25 }
+        ];
+
+        // Listen for mousemove on the whole window
+        window.addEventListener('mousemove', function (e) {
+            const nx = (e.clientX / window.innerWidth) * 2 - 1;
+            const ny = (e.clientY / window.innerHeight) * 2 - 1;
+
+            // Update target for first model
+            targets[0].azimuth = targets[0].baseAzimuth - clamp(nx * targets[0].azimuthRange, -targets[0].azimuthRange, targets[0].azimuthRange);
+            targets[0].elevation = targets[0].baseElevation - clamp(ny * targets[0].elevationRange, -targets[0].elevationRange, targets[0].elevationRange);
+
+            // Update target for second model (can use different mapping if desired)
+            targets[1].azimuth = targets[1].baseAzimuth - clamp(nx * targets[1].azimuthRange, -targets[1].azimuthRange, targets[1].azimuthRange);
+            targets[1].elevation = targets[1].baseElevation - clamp(ny * targets[1].elevationRange, -targets[1].elevationRange, targets[1].elevationRange);
+        });
+
+        // Smooth animation loop for both models
+        function animate() {
+            for (let i = 0; i < 2; i++) {
+                targets[i].currentAzimuth += (targets[i].azimuth - targets[i].currentAzimuth) * 0.08;
+                targets[i].currentElevation += (targets[i].elevation - targets[i].currentElevation) * 0.08;
+                modelViewers[i].cameraOrbit = `${targets[i].currentAzimuth}deg ${targets[i].currentElevation}deg auto`;
+            }
+            requestAnimationFrame(animate);
+        }
+        animate();
+    });
+</script>
+<script>
+    $(".testimonial-content").owlCarousel({
+        loop: true,
+        items: 2,
+        margin: 50,
+        dots: true,
+        nav: false,
+        mouseDrag: true,
+        autoplay: false,
+        autoplayTimeout: 4000,
+        smartSpeed: 800
+    });
+</script>
+
+</html>
